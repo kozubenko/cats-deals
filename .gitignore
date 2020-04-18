@@ -1,3 +1,15 @@
 db/*.sqlite3
 log/
 tmp/
+/.generators
+/.idea/.gitignore
+/.rakeTasks
+/.idea/cats-dealer.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
+/.idea/dbnavigator.xml
+/.idea/codeStyles/Project.xml
+/.idea/.generators
+/.idea/.rakeTasks
