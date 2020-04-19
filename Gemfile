@@ -11,11 +11,14 @@ gem "coffee-rails", "~> 4.2"
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem "typhoeus"
 
 group :development do
   gem "standard"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "web-console", ">= 3.3.0"
+  gem "dotenv-rails"
+  gem 'ffaker'
 end
 
 group :test do
