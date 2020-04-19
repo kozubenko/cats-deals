@@ -13,3 +13,4 @@ tmp/
 /.idea/codeStyles/Project.xml
 /.idea/.generators
 /.idea/.rakeTasks
+/.env
