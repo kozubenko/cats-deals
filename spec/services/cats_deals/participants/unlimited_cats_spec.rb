@@ -19,6 +19,14 @@ RSpec.describe CatsDeals::Participants::UnlimitedCats do
     end
   end
 
+  describe "#options" do
+    subject { instance.send(:options) }
+
+    it "works correct" do
+      expect(subject).to eq({})
+    end
+  end
+
   describe "#fetch_url" do
     let(:api_key) { FFaker::Lorem.word }
 

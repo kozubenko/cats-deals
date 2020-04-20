@@ -5,7 +5,7 @@ RSpec.describe CatsDeals::Participants::HappyCats do
   let(:api_key) { FFaker::Lorem.word }
 
   describe "#handle_response" do
-    let(:parsed_response) { {cats: []} }
+    let(:parsed_response) { {cats: {cat: []}} }
     subject { instance.send(:handle_response, "response") }
 
     it "works correct" do
@@ -17,6 +17,14 @@ RSpec.describe CatsDeals::Participants::HappyCats do
       expect(handler).to receive(:parse).and_return(parsed_response)
 
       expect(subject).to eq([])
+    end
+  end
+
+  describe "#options" do
+    subject { instance.send(:options) }
+
+    it "works correct" do
+      expect(subject).to eq({})
     end
   end
 

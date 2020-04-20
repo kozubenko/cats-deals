@@ -5,6 +5,10 @@ module CatsDeals
         raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
       end
 
+      def options
+        raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+      end
+
       def handle_response
         raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
       end
