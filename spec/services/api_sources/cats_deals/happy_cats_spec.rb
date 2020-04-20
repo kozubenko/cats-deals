@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe CatsDeals::Participants::HappyCats do
+RSpec.describe ApiSources::CatsDeals::HappyCats do
   let(:instance) { described_class.new }
   let(:api_key) { FFaker::Lorem.word }
 

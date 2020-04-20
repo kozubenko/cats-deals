@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe CatsDeals::Participants::UnlimitedCats do
+RSpec.describe ApiSources::CatsDeals::UnlimitedCats do
   let(:instance) { described_class.new }
 
   describe "#handle_response" do

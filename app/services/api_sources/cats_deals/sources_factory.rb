@@ -1,9 +1,9 @@
 require_relative "happy_cats"
 require_relative "unlimited_cats"
 
-module CatsDeals
-  module Participants
-    class ParticipantsFactory
+module ApiSources
+  module CatsDeals
+    class SourcesFactory
       def happy_cats
         HappyCats.new
       end

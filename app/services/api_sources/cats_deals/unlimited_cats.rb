@@ -1,8 +1,8 @@
-require_relative "base_participant"
+require_relative "../base_source"
 
-module CatsDeals
-  module Participants
-    class UnlimitedCats < BaseParticipant
+module ApiSources
+  module CatsDeals
+    class UnlimitedCats < BaseSource
       def fetch_url
         ENV["UNLIMITED_CATS_API_URL"]
       end
