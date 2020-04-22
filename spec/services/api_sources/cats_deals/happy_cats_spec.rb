@@ -34,9 +34,17 @@ RSpec.describe ApiSources::CatsDeals::HappyCats do
     subject { instance.send(:fetch_url) }
 
     it "works correct" do
-      allow(ENV).to receive(:[]).and_call_original
       allow(ENV).to receive(:[]).with("HAPPY_CATS_API_URL").and_return(api_key)
       expect(subject).to eq(api_key)
+    end
+  end
+
+  describe "#serialize" do
+    let(:data) { [{title: "name2", cost: 10, location: "location2", img: "image2"}] }
+    subject { instance.send(:serialize, data) }
+
+    it "works correct" do
+      expect(subject).to eq([{name: "name2", price: 10, location: "location2", image: "image2"}])
     end
   end
 end

@@ -18,9 +18,10 @@ group :development do
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "web-console", ">= 3.3.0"
   gem "dotenv-rails"
-  gem 'ffaker'
+  gem "ffaker"
 end
 
 group :test do
   gem "rspec-rails", "~> 4.0.0"
+  gem "webmock"
 end

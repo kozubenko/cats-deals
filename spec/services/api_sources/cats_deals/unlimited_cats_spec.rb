@@ -33,7 +33,6 @@ RSpec.describe ApiSources::CatsDeals::UnlimitedCats do
     subject { instance.send(:fetch_url) }
 
     it "works correct" do
-      allow(ENV).to receive(:[]).and_call_original
       allow(ENV).to receive(:[]).with("UNLIMITED_CATS_API_URL").and_return(api_key)
       expect(subject).to eq(api_key)
     end
