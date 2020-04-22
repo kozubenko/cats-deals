@@ -7,17 +7,6 @@ RSpec.shared_examples "fetch api" do
 
   let(:response) { instance_double "Typhoeus::Response" }
 
-  describe "#fetch" do
-    subject { instance.send(:fetch) }
-
-    it "works correct" do
-      expect(instance).to receive(:generate_requests)
-      expect(instance.hydra).to receive(:run)
-
-      subject
-    end
-  end
-
   describe "#generate_requests" do
     subject { instance.send(:generate_requests) }
 

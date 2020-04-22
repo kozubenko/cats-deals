@@ -1,15 +1,10 @@
-require_relative "happy_cats"
-require_relative "unlimited_cats"
-
 module ApiSources
   module CatsDeals
     class SourcesFactory
-      def happy_cats
-        HappyCats.new
-      end
-
-      def unlimited_cats
-        UnlimitedCats.new
+      %w[happy_cats unlimited_cats].each do |method|
+        define_method(method) do
+          "ApiSources::CatsDeals::#{method.camelize}".constantize.new
+        end
       end
     end
   end

@@ -26,4 +26,12 @@ RSpec.describe ApiSources::BaseSource do
       expect { subject }.to raise_error(NotImplementedError)
     end
   end
+
+  describe "#serialize" do
+    subject { instance.send(:serialize, nil) }
+
+    it "works correct" do
+      expect { subject }.to raise_error(NotImplementedError)
+    end
+  end
 end

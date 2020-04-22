@@ -12,7 +12,11 @@ module ApiSources
       end
 
       def handle_response(response)
-        ResponseHandler.new(response).parse
+        serialize(ResponseHandler.new(response).parse)
+      end
+
+      def serialize(data)
+        data
       end
     end
   end
