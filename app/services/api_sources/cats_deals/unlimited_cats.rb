@@ -16,7 +16,14 @@ module ApiSources
       end
 
       def serialize(data)
-        data
+        data.map do |item|
+          {
+            type: item[:name],
+            price: item[:price].to_i,
+            location: item[:location],
+            image: item[:image].to_s
+          }
+        end
       end
     end
   end

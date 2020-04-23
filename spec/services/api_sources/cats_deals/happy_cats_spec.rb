@@ -40,11 +40,30 @@ RSpec.describe ApiSources::CatsDeals::HappyCats do
   end
 
   describe "#serialize" do
-    let(:data) { [{title: "name2", cost: 10, location: "location2", img: "image2"}] }
+    let(:image_source) { FFaker::Internet.uri("http") }
+    let(:price) { "10" }
+
+    let(:data) { [{title: "name2", cost: price, location: "location2", img: image_source}] }
     subject { instance.send(:serialize, data) }
 
     it "works correct" do
-      expect(subject).to eq([{name: "name2", price: 10, location: "location2", image: "image2"}])
+      expect(subject).to eq([{type: "name2", price: price.to_i, location: "location2", image: image_source}])
+    end
+
+    context "image source is empty" do
+      let(:image_source) { nil }
+
+      it "works correct" do
+        expect(subject).to eq([{type: "name2", price: price.to_i, location: "location2", image: ""}])
+      end
+    end
+
+    context "price is empty" do
+      let(:price) { nil }
+
+      it "works correct" do
+        expect(subject).to eq([{type: "name2", price: 0, location: "location2", image: image_source}])
+      end
     end
   end
 end
