@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe RemoteServices::FetchCollectionsApi do
+RSpec.describe RemoteServices::FetchCollections do
   include_examples "fetch api"
 
   describe "#run" do
@@ -18,22 +18,21 @@ RSpec.describe RemoteServices::FetchCollectionsApi do
 
       let(:response) do
         [
-          {name: "name2", price: 10, location: "location2", image: "image2"},
-          {name: "name1", price: 5, location: "location1", image: "image1"}
+          {type: "name2", price: 10, location: "location2", image: "image2"},
+          {type: "name1", price: 5, location: "location1", image: "image1"}
         ]
       end
 
-      subject { instance.send(:fetch) }
+      subject { instance.send(:run) }
 
       it "works correct" do
-        stub_request(:get, json_api_key).to_return(body: json_response, status: 200)
         stub_request(:get, xml_api_key).to_return(body: xml_response, status: 200)
+        stub_request(:get, json_api_key).to_return(body: json_response, status: 200)
 
-        allow(ENV).to receive(:[]).with("HAPPY_CATS_API_URL").and_return(xml_api_key)
-        allow(ENV).to receive(:[]).with("UNLIMITED_CATS_API_URL").and_return(json_api_key)
+        expect(ENV).to receive(:[]).with("HAPPY_CATS_API_URL").and_return(xml_api_key)
+        expect(ENV).to receive(:[]).with("UNLIMITED_CATS_API_URL").and_return(json_api_key)
 
-        subject
-        expect(instance.storage).to eq(response)
+        expect(subject).to eq(response)
       end
     end
   end

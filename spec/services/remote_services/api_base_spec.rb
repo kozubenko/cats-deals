@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe RemoteServices::ApiBase do
   include_examples "fetch api"
 
-  describe "#fetch" do
-    subject { instance.send(:fetch) }
+  describe "#run" do
+    subject { instance.send(:run) }
 
     it "works correct" do
       expect(instance).to receive(:generate_requests)

@@ -7,9 +7,11 @@ module RemoteServices
       @factory = sources_factory
     end
 
-    def fetch
+    def run
       generate_requests
       hydra.run
+
+      storage
     end
 
     private

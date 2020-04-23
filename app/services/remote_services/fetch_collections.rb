@@ -1,7 +1,7 @@
 require_relative "api_base"
 
 module RemoteServices
-  class FetchCollectionsApi < ApiBase
+  class FetchCollections < ApiBase
     def initialize(sources_factory)
       super(sources_factory)
       @storage = []
