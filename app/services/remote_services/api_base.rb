@@ -38,19 +38,29 @@ module RemoteServices
         .map { |source| sources_factory.public_send(source) }
     end
 
-    def process_response(response, source) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+    def process_response(response, source)
       if response.success?
         add_to_storage(source.handle_response(response))
-      elsif response.timed_out?
-        Rails.logger.error("Got a time out for #{source.class}")
+      else
+        handle_failed_response(response, source)
+      end
+    end
+
+    def handle_failed_response(response, source)
+      if response.timed_out?
+        log_error("Got a time out for #{source.class}")
       elsif response.code.zero?
-        Rails.logger.error(<<-TEXT.squish)
+        log_error(<<-TEXT.squish)
           Could not get an http response, something's wrong for #{source.class},
           message: #{response.return_message}
         TEXT
       else
-        Rails.logger.error("HTTP request failed with #{response.code} for #{source.class}")
+        log_error("HTTP request failed with #{response.code} for #{source.class}")
       end
+    end
+
+    def log_error(error)
+      Rails.logger.error(error)
     end
 
     def add_to_storage(_response)

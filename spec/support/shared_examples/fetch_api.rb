@@ -64,24 +64,44 @@ RSpec.shared_examples 'fetch api' do
       subject
     end
 
-    context 'when response timed out' do
+    context 'when response failed' do
       it 'works correct' do
         expect(response).to receive(:success?).and_return(false)
-        expect(response).to receive(:timed_out?).and_return(true)
         expect(instance).not_to receive(:add_to_storage)
+        expect(instance).to receive(:handle_failed_response).with(response, source_instance)
+
+        subject
+      end
+    end
+  end
+
+  describe '#handle_failed_response' do
+    subject { instance.send(:handle_failed_response, response, source_instance) }
+
+    it 'works correct' do
+      expect(response).to receive(:timed_out?).and_return(false)
+      expect(response).to receive(:code).and_return(1)
+      expect(response).to receive(:code)
+      expect(instance).to receive(:log_error)
+
+      subject
+    end
+
+    context 'when response is timed_out' do
+      it 'works correct' do
+        expect(response).to receive(:timed_out?).and_return(true)
+        expect(instance).to receive(:log_error)
 
         subject
       end
     end
 
-    context 'when response response code is 0' do
-      it 'works correct' do # rubocop:disable  RSpec/ExampleLength
-        expect(response).to receive(:success?).and_return(false)
+    context 'when response code is 0' do
+      it 'works correct' do
         expect(response).to receive(:timed_out?).and_return(false)
-
         expect(response).to receive(:code).and_return(0)
         expect(response).to receive(:return_message)
-        expect(instance).not_to receive(:add_to_storage)
+        expect(instance).to receive(:log_error)
 
         subject
       end
