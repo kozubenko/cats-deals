@@ -12,7 +12,7 @@ module ApiSources
       end
 
       def handle_response(response)
-        response = ResponseHandler.new(response, parser: Parsers::XmlParser).parse
+        response = ResponseHandler.new(response, Parsers::XmlParser).parse
         serialize(response.dig(:cats, :cat))
       end
 

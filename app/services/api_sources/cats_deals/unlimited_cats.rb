@@ -12,7 +12,7 @@ module ApiSources
       end
 
       def handle_response(response)
-        serialize(ResponseHandler.new(response).parse)
+        serialize(ResponseHandler.new(response, ::Parsers::JsonParser).parse)
       end
 
       private

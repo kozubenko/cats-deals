@@ -7,8 +7,9 @@ RSpec.describe ::ResponseHandler do
 
   let(:response) { Typhoeus::Response.new(body: json) }
 
-  let(:options) { {} }
-  let(:instance) { described_class.new(response, options) }
+  let(:parser) { ::Parsers::JsonParser }
+
+  let(:instance) { described_class.new(response, parser) }
 
   describe '#parse' do
     subject { instance.parse }
@@ -20,7 +21,7 @@ RSpec.describe ::ResponseHandler do
     end
 
     context 'when got xml response' do
-      let(:options) { {parser: Parsers::XmlParser} }
+      let(:parser) { ::Parsers::XmlParser }
       let(:response) { Typhoeus::Response.new(body: xml) }
 
       it 'works correct' do

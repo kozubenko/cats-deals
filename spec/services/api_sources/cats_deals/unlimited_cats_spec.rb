@@ -13,7 +13,7 @@ RSpec.describe ApiSources::CatsDeals::UnlimitedCats do
       parser = ::Parsers::JsonParser
       handler = instance_double '::ResponseHandler', response: response, parser: parser
 
-      expect(::ResponseHandler).to receive(:new).with('response').and_return(handler)
+      expect(::ResponseHandler).to receive(:new).with('response', parser).and_return(handler)
       expect(handler).to receive(:parse).and_return(parsed_response)
 
       expect(subject).to eq([])

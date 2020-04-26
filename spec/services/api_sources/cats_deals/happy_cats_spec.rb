@@ -14,7 +14,7 @@ RSpec.describe ApiSources::CatsDeals::HappyCats do
       parser = ::Parsers::XmlParser
       handler = instance_double '::ResponseHandler', response: response, parser: parser
 
-      expect(::ResponseHandler).to receive(:new).with('response', parser: parser).and_return(handler)
+      expect(::ResponseHandler).to receive(:new).with('response', parser).and_return(handler)
       expect(handler).to receive(:parse).and_return(parsed_response)
 
       expect(subject).to eq([])
