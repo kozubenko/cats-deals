@@ -15,13 +15,15 @@ module ApiSources
         serialize(ResponseHandler.new(response).parse)
       end
 
+      private
+
       def serialize(data)
         data.map do |item|
           {
             type: item[:name],
             price: item[:price].to_i,
             location: item[:location],
-            image: item[:image].to_s
+            image: item[:image]
           }
         end
       end

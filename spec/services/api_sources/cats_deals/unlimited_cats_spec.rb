@@ -51,14 +51,6 @@ RSpec.describe ApiSources::CatsDeals::UnlimitedCats do
       expect(subject).to eq([{type: 'name2', price: price.to_i, location: 'location2', image: image_source}])
     end
 
-    context 'when image source is empty' do
-      let(:image_source) { nil }
-
-      it 'works correct' do
-        expect(subject).to eq([{type: 'name2', price: price.to_i, location: 'location2', image: ''}])
-      end
-    end
-
     context 'when price is empty' do
       let(:price) { nil }
 

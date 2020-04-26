@@ -16,13 +16,15 @@ module ApiSources
         serialize(response.dig(:cats, :cat))
       end
 
+      private
+
       def serialize(data)
         data.map do |item|
           {
             type: item[:title],
             price: item[:cost].to_i,
             location: item[:location],
-            image: item[:img].to_s
+            image: item[:img]
           }
         end
       end
