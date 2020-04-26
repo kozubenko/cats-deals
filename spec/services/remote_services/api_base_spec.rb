@@ -22,11 +22,5 @@ RSpec.describe RemoteServices::ApiBase do
     end
   end
 
-  describe '#add_to_storage' do
-    subject { instance.send(:add_to_storage, nil) }
-
-    it 'works correct' do
-      expect { subject }.to raise_error(NotImplementedError)
-    end
-  end
+  it_behaves_like 'instance interface method', :add_to_storage
 end

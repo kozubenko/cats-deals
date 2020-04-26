@@ -5,11 +5,11 @@ module InterfaceMethodConcern
 
   class_methods do
     def define_interface_method(method_names)
-      Array.wrap(method_names).map do |method_name|
+      Array.wrap(method_names).each do |method_name|
         raise "#{method_name} already defined" if method_defined?(method_name)
 
         define_method(method_name) do |*_args|
-          raise NotImplementedError, "#{self.class} needs to implement '#{method_name}'!"
+          raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
         end
 
         yield(method_name) if block_given?
