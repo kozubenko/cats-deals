@@ -9,7 +9,7 @@ RSpec.describe RemoteServices::FetchCollections do
 
   let(:response) { instance_double 'Typhoeus::Response' }
 
-  it_behaves_like 'fetch api'
+  it_behaves_like 'api base'
 
   describe '#run' do
     context 'when use cats deals source' do

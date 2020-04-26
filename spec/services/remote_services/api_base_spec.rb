@@ -9,7 +9,7 @@ RSpec.describe RemoteServices::ApiBase do
 
   let(:response) { instance_double 'Typhoeus::Response' }
 
-  it_behaves_like 'fetch api'
+  it_behaves_like 'api base'
 
   describe '#run' do
     subject { instance.send(:run) }

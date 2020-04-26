@@ -1,4 +1,4 @@
-RSpec.shared_examples 'fetch api' do
+RSpec.shared_examples 'api base' do
   describe '#generate_requests' do
     subject { instance.send(:generate_requests) }
 
