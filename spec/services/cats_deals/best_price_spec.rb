@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Analytics::CatsDeals::BestPrice do
+RSpec.describe CatsDeals::BestPrice do
   let(:params) { {type: 'type1', location: 'odessa'} }
 
   let(:deal1) { {type: 'type1', location: 'odessa', price: 50} }

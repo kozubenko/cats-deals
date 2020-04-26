@@ -18,7 +18,7 @@ describe CatsDealsController do
 
       expect(remote_service_instance).to receive(:run).and_return(result)
 
-      expect(Analytics::CatsDeals::BestPrice).to receive(:new).with(result, {}).and_return(analytics_service_instance)
+      expect(::CatsDeals::BestPrice).to receive(:new).with(result, {}).and_return(analytics_service_instance)
       expect(analytics_service_instance).to receive(:run).and_return(result)
 
       expect(subject).to render_template(:index)

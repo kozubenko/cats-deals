@@ -2,7 +2,7 @@
 
 class RequestsController < ApplicationController
   def new
-    @filters = Analytics::CatsDeals::BestPrice::AVAILABLE_FILTERS
+    @filters = ::CatsDeals::BestPrice::AVAILABLE_FILTERS
   end
 
   def create
