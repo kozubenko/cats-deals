@@ -11,9 +11,5 @@ module ApiSources
     def handle_response(_response)
       raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
     end
-
-    def serialize(_data)
-      raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
-    end
   end
 end

@@ -1,4 +1,4 @@
-require_relative "api_base"
+require_relative 'api_base'
 
 module RemoteServices
   class FetchCollections < ApiBase

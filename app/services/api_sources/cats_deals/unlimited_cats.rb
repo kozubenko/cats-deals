@@ -1,10 +1,10 @@
-require_relative "../base_source"
+require_relative '../base_source'
 
 module ApiSources
   module CatsDeals
     class UnlimitedCats < BaseSource
       def fetch_url
-        ENV["UNLIMITED_CATS_API_URL"]
+        ENV['UNLIMITED_CATS_API_URL']
       end
 
       def options

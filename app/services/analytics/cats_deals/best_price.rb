@@ -15,8 +15,7 @@ module Analytics
 
       def run
         filtered_collection = filter_collection(collection)
-        sorted_collection = sort_by_price(filtered_collection)
-        @collection = sorted_collection
+        sort_by_price(filtered_collection)
       end
 
       private

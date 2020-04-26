@@ -14,7 +14,7 @@ describe RequestsController do
   describe 'GET #create' do
     subject { get :create, params: params }
 
-    let(:params) { { location: FFaker::Lorem.word, type: FFaker::Lorem.word } }
+    let(:params) { {location: FFaker::Lorem.word, type: FFaker::Lorem.word} }
 
     it 'redirect to cats deals' do
       expect(subject).to redirect_to controller: 'cats_deals', action: :index, filters: params

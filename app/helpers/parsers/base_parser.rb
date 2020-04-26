@@ -6,7 +6,7 @@ module Parsers
       @data = data
     end
 
-    def run(*args)
+    def run(*_args)
       raise NotImplementedError
     end
   end
