@@ -49,14 +49,14 @@ RSpec.describe ApiSources::CatsDeals::HappyCats do
     let(:data) { [{title: 'name2', cost: price, location: 'location2', img: image_source}] }
 
     it 'works correct' do
-      expect(subject).to eq([{type: 'name2', price: price.to_i, location: 'location2', image: image_source}])
+      expect(subject).to eq([{cat_type: 'name2', price: price.to_i, location: 'location2', image: image_source}])
     end
 
     context 'when price is empty' do
       let(:price) { nil }
 
       it 'works correct' do
-        expect(subject).to eq([{type: 'name2', price: 0, location: 'location2', image: image_source}])
+        expect(subject).to eq([{cat_type: 'name2', price: 0, location: 'location2', image: image_source}])
       end
     end
   end

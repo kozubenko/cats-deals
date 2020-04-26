@@ -1,8 +1,11 @@
 module CatsDeals
   class BestPrice
     AVAILABLE_FILTERS = {
-      types: %w[bengal abyssin persian],
-      locations: %w[kiev odessa lviv]
+      cat_types: [
+        'abyssin', 'american curl', 'bengal', 'bobtail', 'british shorthair', 'devon rex', 'maine coon', 'sphynx',
+        'persian', 'siamese', 'grumpy'
+      ],
+      locations: %w[lviv odessa kyiv kharkiv]
     }.freeze
 
     attr_reader :collection, :params
@@ -21,10 +24,7 @@ module CatsDeals
 
     def filter_collection(collection)
       collection.select do |item|
-        [
-          compare_strings(item[:type], params[:type]),
-          compare_strings(item[:location], params[:location])
-        ].all?
+        compare_strings(item[:cat_type], params[:cat_type]) && compare_strings(item[:location], params[:location])
       end
     end
 
@@ -38,4 +38,4 @@ module CatsDeals
       collection.sort_by { |obj| obj[:price] }
     end
   end
-  end
+end

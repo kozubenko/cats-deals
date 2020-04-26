@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe CatsDeals::BestPrice do
-  let(:params) { {type: 'type1', location: 'odessa'} }
+  let(:params) { {cat_type: 'type1', location: 'odessa'} }
 
-  let(:deal1) { {type: 'type1', location: 'odessa', price: 50} }
-  let(:deal2) { {type: 'type2', location: 'lviv', price: 10} }
-  let(:deal3) { {type: 'type1', location: 'odessa', price: 20} }
+  let(:deal1) { {cat_type: 'type1', location: 'odessa', price: 50} }
+  let(:deal2) { {cat_type: 'type2', location: 'lviv', price: 10} }
+  let(:deal3) { {cat_type: 'type1', location: 'odessa', price: 20} }
 
   let(:collection) { [deal1, deal2, deal3] }
 

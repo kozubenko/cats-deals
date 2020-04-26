@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
 
   def create
     request_params = {
-      filters: params.permit(%i[type location])
+      filters: params.permit(%i[cat_type location])
     }
 
     redirect_to cats_deals_path(params: request_params)

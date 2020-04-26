@@ -17,7 +17,7 @@
     <tbody>
     <% @analysed_cats_deals.each do |cat| %>
       <tr>
-        <td><%= cat[:type] %></td>
+        <td><%= cat[:cat_type] %></td>
         <td><%= cat[:price] %></td>
         <td><%= cat[:location] %></td>
         <td><%= image_tag(cat[:image], width: '150px') %></td>

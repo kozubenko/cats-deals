@@ -3,11 +3,11 @@
     <%= form_tag(request_path, method: 'post', class: 'form-horizontal center') do %>
       <p>
         Select cat type:<br/>
-        <%= select_tag('type', options_for_select(@filters[:types].map(&:capitalize))) %>
+        <%= select_tag('cat_type', options_for_select(@filters[:cat_types].map(&:titleize))) %>
       </p>
       <p>
         Select your location:<br/>
-        <%= select_tag('location', options_for_select(@filters[:locations].map(&:capitalize))) %>
+        <%= select_tag('location', options_for_select(@filters[:locations].map(&:titleize))) %>
       </p>
       <div><%= submit_tag 'Send request', class: 'btn btn-default' %></div>
     <% end %>

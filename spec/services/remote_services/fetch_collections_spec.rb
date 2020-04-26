@@ -20,8 +20,8 @@ RSpec.describe RemoteServices::FetchCollections do
 
       let(:response) do
         [
-          {type: 'name2', price: 10, location: 'location2', image: 'image2'},
-          {type: 'name1', price: 5, location: 'location1', image: 'image1'}
+          {cat_type: 'name2', price: 10, location: 'location2', image: 'image2'},
+          {cat_type: 'name1', price: 5, location: 'location1', image: 'image1'}
         ]
       end
 
