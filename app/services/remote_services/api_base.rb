@@ -1,5 +1,6 @@
 module RemoteServices
   class ApiBase
+    include InterfaceMethodConcern
     attr_reader :hydra, :factory, :storage
 
     def initialize(sources_factory)
@@ -63,8 +64,6 @@ module RemoteServices
       Rails.logger.error(error)
     end
 
-    def add_to_storage(_response)
-      raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
-    end
+    define_private_interface_method(:add_to_storage)
   end
 end

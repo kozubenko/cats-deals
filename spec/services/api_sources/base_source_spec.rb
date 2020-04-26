@@ -4,7 +4,7 @@ RSpec.describe ApiSources::BaseSource do
   let(:instance) { described_class.new }
 
   describe '#handle_response' do
-    subject { instance.send(:handle_response, 'response') }
+    subject { instance.send(:handle_response) }
 
     it 'works correct' do
       expect { subject }.to raise_error(NotImplementedError)
