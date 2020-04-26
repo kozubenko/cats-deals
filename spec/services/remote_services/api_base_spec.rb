@@ -1,7 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe RemoteServices::ApiBase do
-  include_examples 'fetch api'
+  let(:factory_class_name) { 'AbstractSourceFactory' }
+  let(:factory) { double factory_class_name }
+
+  let(:instance) { described_class.new(factory) }
+  let(:source_instance) { instance_double 'ApiSources::BaseSource' }
+
+  let(:response) { instance_double 'Typhoeus::Response' }
+
+  it_behaves_like 'fetch api'
 
   describe '#run' do
     subject { instance.send(:run) }

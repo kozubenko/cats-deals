@@ -12,7 +12,8 @@ module ApiSources
       end
 
       def handle_response(response)
-        serialize(ResponseHandler.new(response, ::Parsers::JsonParser).parse)
+        parsed_response = ResponseHandler.new(response, ::Parsers::JsonParser).parse
+        serialize(parsed_response)
       end
 
       private

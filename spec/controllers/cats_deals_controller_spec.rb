@@ -16,10 +16,10 @@ describe CatsDealsController do
         .with(::ApiSources::CatsDeals::SourcesFactory)
         .and_return(remote_service_instance)
 
-      expect(remote_service_instance).to receive(:run).and_return(result)
+      expect(remote_service_instance).to receive(:run).once.and_return(result)
 
       expect(::CatsDeals::BestPrice).to receive(:new).with(result, {}).and_return(analytics_service_instance)
-      expect(analytics_service_instance).to receive(:run).and_return(result)
+      expect(analytics_service_instance).to receive(:run).once.and_return(result)
 
       expect(subject).to render_template(:index)
     end

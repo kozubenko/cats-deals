@@ -35,7 +35,7 @@ RSpec.describe ApiSources::CatsDeals::HappyCats do
     let(:api_key) { FFaker::Lorem.word }
 
     it 'works correct' do
-      allow(ENV).to receive(:[]).with('HAPPY_CATS_API_URL').and_return(api_key)
+      expect(ENV).to receive(:[]).with('HAPPY_CATS_API_URL').and_return(api_key)
       expect(subject).to eq(api_key)
     end
   end

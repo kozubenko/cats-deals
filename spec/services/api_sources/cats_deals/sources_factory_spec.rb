@@ -1,27 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe ApiSources::CatsDeals::SourcesFactory do
-  let(:instance) { described_class.new }
+  shared_examples 'source instance' do |method, source_class_name|
+    let(:instance) { described_class.new }
+    let(:source) { instance_double source_class_name }
 
-  describe '#happy_cats' do
-    subject { instance.send(:happy_cats) }
+    it 'return source' do
+      expect(source_class_name.constantize).to receive(:new).and_return(source)
 
-    it 'return happy cats participant' do
-      participant = instance_double '::CatsDeals::Participants::HappyCats'
-      expect(::ApiSources::CatsDeals::HappyCats).to receive(:new).and_return(participant)
-
-      expect(subject).to eq(participant)
+      expect(instance.send(method)).to eq(source)
     end
   end
 
   describe '#unlimited_cats' do
-    subject { instance.send(:unlimited_cats) }
+    it_behaves_like 'source instance', :unlimited_cats, 'ApiSources::CatsDeals::UnlimitedCats'
+  end
 
-    it 'return happy cats participant' do
-      participant = instance_double '::CatsDeals::Participants::UnlimitedCats'
-      expect(::ApiSources::CatsDeals::UnlimitedCats).to receive(:new).and_return(participant)
-
-      expect(subject).to eq(participant)
-    end
+  describe '#happy_cats' do
+    it_behaves_like 'source instance', :happy_cats, 'ApiSources::CatsDeals::HappyCats'
   end
 end

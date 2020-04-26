@@ -1,12 +1,4 @@
 RSpec.shared_examples 'fetch api' do
-  let(:factory_class_name) { 'AbstractSourceFactory' }
-  let(:factory) { double factory_class_name }
-
-  let(:instance) { described_class.new(factory) }
-  let(:source_instance) { instance_double 'ApiSources::BaseSource' }
-
-  let(:response) { instance_double 'Typhoeus::Response' }
-
   describe '#generate_requests' do
     subject { instance.send(:generate_requests) }
 
