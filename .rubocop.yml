@@ -10,7 +10,7 @@ AllCops:
     - tmp/**/*
 
 Metrics/LineLength:
-  Max: 95
+  Max: 120
 
 Style/Documentation:
   Enabled: false
@@ -22,13 +22,26 @@ Metrics/BlockLength:
 Style/MultilineBlockChain:
   Enabled: false
 
+Style/StringLiterals:
+  SupportedStyles:
+    - single_quotes
+
 Style/PredicateName:
   NamePrefix:
     - is_
     - have_
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
     - is_
     - have_
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/NamedSubject:
+  Enabled: false
 
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space

@@ -1,0 +1,43 @@
+module CatsDeals
+  class BestPrice
+    AVAILABLE_FILTERS = {
+      cat_types: [
+        'abyssin', 'american curl', 'bengal', 'bobtail', 'british shorthair', 'devon rex', 'maine coon', 'sphynx',
+        'persian', 'siamese', 'grumpy'
+      ],
+      locations: %w[lviv odessa kyiv kharkiv]
+    }.freeze
+
+    attr_reader :collection, :params
+
+    def initialize(collection, params)
+      @collection = collection
+      @params = params
+    end
+
+    def run
+      filtered_collection = filter_collection(collection)
+      sort_by_price(filtered_collection)
+    end
+
+    private
+
+    def filter_collection(collection)
+      return collection if params.empty?
+
+      collection.select do |item|
+        compare_strings(item[:cat_type], params[:cat_type]) && compare_strings(item[:location], params[:location])
+      end
+    end
+
+    def compare_strings(first, second)
+      return false unless [first, second].all?
+
+      first.downcase == second.downcase
+    end
+
+    def sort_by_price(collection)
+      collection.sort_by { |obj| obj[:price] }
+    end
+  end
+end
