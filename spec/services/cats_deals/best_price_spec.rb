@@ -17,6 +17,15 @@ RSpec.describe CatsDeals::BestPrice do
     it 'works correct' do
       expect(subject).to eq([deal3, deal1])
     end
+
+    context 'when params is empty' do
+      let(:params) { {} }
+
+      it 'works correct' do
+        expect(subject.length).to eq(3)
+        expect(subject).to eq([deal2, deal3, deal1])
+      end
+    end
   end
 
   describe '#filter_collection' do
@@ -25,6 +34,15 @@ RSpec.describe CatsDeals::BestPrice do
     it 'works correct' do
       expect(subject.length).to eq(2)
       expect(subject).to eq([deal1, deal3])
+    end
+
+    context 'when params is empty' do
+      let(:params) { {} }
+
+      it 'works correct' do
+        expect(subject.length).to eq(3)
+        expect(subject).to eq(collection)
+      end
     end
   end
 

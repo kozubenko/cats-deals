@@ -10,7 +10,7 @@ module CatsDeals
 
     attr_reader :collection, :params
 
-    def initialize(collection, params = {})
+    def initialize(collection, params)
       @collection = collection
       @params = params
     end
@@ -23,6 +23,8 @@ module CatsDeals
     private
 
     def filter_collection(collection)
+      return collection if params.empty?
+
       collection.select do |item|
         compare_strings(item[:cat_type], params[:cat_type]) && compare_strings(item[:location], params[:location])
       end
